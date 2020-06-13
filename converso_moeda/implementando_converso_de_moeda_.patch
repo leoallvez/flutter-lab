@@ -1,0 +1,9 @@
+Index: flutter_ocr/android/settings_aar.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- flutter_ocr/android/settings_aar.gradle	(date 1591853727807)
++++ flutter_ocr/android/settings_aar.gradle	(date 1591853727807)
+@@ -0,0 +1,1 @@
++include ':app'
