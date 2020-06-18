@@ -1,0 +1,1676 @@
+Index: flutter_ocr/android/app/src/debug/AndroidManifest.xml
+===================================================================
+--- flutter_ocr/android/app/src/debug/AndroidManifest.xml	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/android/app/src/debug/AndroidManifest.xml	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,11 +0,0 @@
+-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+-    package="com.leoallvez.flutterocr">
+-    <!-- Flutter needs it to communicate with the running application
+-         to allow setting breakpoints, to provide hot reload, etc.
+-    -->
+-    <uses-permission android:name="android.permission.INTERNET"/>
+-    <uses-feature android:name="android.hardware.camera" />
+-    <uses-permission android:name="android.permission.CAMERA" />
+-
+-    <activity android:name="io.github.edufolly.fluttermobilevision.barcode.BarcodeCaptureActivity" />
+-</manifest>
+Index: flutter_ocr/android/app/src/main/kotlin/com/leoallvez/flutterocr/MainActivity.kt
+===================================================================
+--- flutter_ocr/android/app/src/main/kotlin/com/leoallvez/flutterocr/MainActivity.kt	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/android/app/src/main/kotlin/com/leoallvez/flutterocr/MainActivity.kt	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,12 +0,0 @@
+-package com.leoallvez.flutterocr
+-
+-import androidx.annotation.NonNull;
+-import io.flutter.embedding.android.FlutterActivity
+-import io.flutter.embedding.engine.FlutterEngine
+-import io.flutter.plugins.GeneratedPluginRegistrant
+-
+-class MainActivity: FlutterActivity() {
+-    override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
+-        GeneratedPluginRegistrant.registerWith(flutterEngine);
+-    }
+-}
+Index: flutter_ocr/android/app/src/main/res/drawable/launch_background.xml
+===================================================================
+--- flutter_ocr/android/app/src/main/res/drawable/launch_background.xml	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/android/app/src/main/res/drawable/launch_background.xml	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,12 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<!-- Modify this file to customize your launch splash screen -->
+-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+-    <item android:drawable="@android:color/white" />
+-
+-    <!-- You can insert your own image assets here -->
+-    <!-- <item>
+-        <bitmap
+-            android:gravity="center"
+-            android:src="@mipmap/launch_image" />
+-    </item> -->
+-</layer-list>
+Index: flutter_ocr/android/app/src/main/res/values/styles.xml
+===================================================================
+--- flutter_ocr/android/app/src/main/res/values/styles.xml	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/android/app/src/main/res/values/styles.xml	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<resources>
+-    <style name="LaunchTheme" parent="@android:style/Theme.Black.NoTitleBar">
+-        <!-- Show a splash screen on the activity. Automatically removed when
+-             Flutter draws its first frame -->
+-        <item name="android:windowBackground">@drawable/launch_background</item>
+-    </style>
+-</resources>
+Index: flutter_ocr/android/app/src/main/AndroidManifest.xml
+===================================================================
+--- flutter_ocr/android/app/src/main/AndroidManifest.xml	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/android/app/src/main/AndroidManifest.xml	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,30 +0,0 @@
+-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+-    package="com.leoallvez.flutterocr">
+-    <!-- io.flutter.app.FlutterApplication is an android.app.Application that
+-         calls FlutterMain.startInitialization(this); in its onCreate method.
+-         In most cases you can leave this as-is, but you if you want to provide
+-         additional functionality it is fine to subclass or reimplement
+-         FlutterApplication and put your custom class here. -->
+-    <application
+-        android:name="io.flutter.app.FlutterApplication"
+-        android:label="flutterocr"
+-        android:icon="@mipmap/ic_launcher">
+-        <activity
+-            android:name=".MainActivity"
+-            android:launchMode="singleTop"
+-            android:theme="@style/LaunchTheme"
+-            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+-            android:hardwareAccelerated="true"
+-            android:windowSoftInputMode="adjustResize">
+-            <intent-filter>
+-                <action android:name="android.intent.action.MAIN"/>
+-                <category android:name="android.intent.category.LAUNCHER"/>
+-            </intent-filter>
+-        </activity>
+-        <!-- Don't delete the meta-data below.
+-             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
+-        <meta-data
+-            android:name="flutterEmbedding"
+-            android:value="2" />
+-    </application>
+-</manifest>
+Index: flutter_ocr/android/app/src/profile/AndroidManifest.xml
+===================================================================
+--- flutter_ocr/android/app/src/profile/AndroidManifest.xml	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/android/app/src/profile/AndroidManifest.xml	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,7 +0,0 @@
+-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+-    package="com.leoallvez.flutterocr">
+-    <!-- Flutter needs it to communicate with the running application
+-         to allow setting breakpoints, to provide hot reload, etc.
+-    -->
+-    <uses-permission android:name="android.permission.INTERNET"/>
+-</manifest>
+Index: flutter_ocr/android/app/build.gradle
+===================================================================
+--- flutter_ocr/android/app/build.gradle	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/android/app/build.gradle	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,67 +0,0 @@
+-def localProperties = new Properties()
+-def localPropertiesFile = rootProject.file('local.properties')
+-if (localPropertiesFile.exists()) {
+-    localPropertiesFile.withReader('UTF-8') { reader ->
+-        localProperties.load(reader)
+-    }
+-}
+-
+-def flutterRoot = localProperties.getProperty('flutter.sdk')
+-if (flutterRoot == null) {
+-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+-}
+-
+-def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+-if (flutterVersionCode == null) {
+-    flutterVersionCode = '1'
+-}
+-
+-def flutterVersionName = localProperties.getProperty('flutter.versionName')
+-if (flutterVersionName == null) {
+-    flutterVersionName = '1.0'
+-}
+-
+-apply plugin: 'com.android.application'
+-apply plugin: 'kotlin-android'
+-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+-
+-android {
+-    compileSdkVersion 28
+-
+-    sourceSets {
+-        main.java.srcDirs += 'src/main/kotlin'
+-    }
+-
+-    lintOptions {
+-        disable 'InvalidPackage'
+-    }
+-
+-    defaultConfig {
+-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+-        applicationId "com.leoallvez.flutterocr"
+-        minSdkVersion 16
+-        targetSdkVersion 28
+-        versionCode flutterVersionCode.toInteger()
+-        versionName flutterVersionName
+-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+-    }
+-
+-    buildTypes {
+-        release {
+-            // TODO: Add your own signing config for the release build.
+-            // Signing with the debug keys for now, so `flutter run --release` works.
+-            signingConfig signingConfigs.debug
+-        }
+-    }
+-}
+-
+-flutter {
+-    source '../..'
+-}
+-
+-dependencies {
+-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+-    testImplementation 'junit:junit:4.12'
+-    androidTestImplementation 'androidx.test:runner:1.1.1'
+-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+-}
+Index: flutter_ocr/android/gradle/wrapper/gradle-wrapper.properties
+===================================================================
+--- flutter_ocr/android/gradle/wrapper/gradle-wrapper.properties	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/android/gradle/wrapper/gradle-wrapper.properties	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,6 +0,0 @@
+-#Fri Jun 23 08:50:38 CEST 2017
+-distributionBase=GRADLE_USER_HOME
+-distributionPath=wrapper/dists
+-zipStoreBase=GRADLE_USER_HOME
+-zipStorePath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-5.6.2-all.zip
+Index: flutter_ocr/android/.gitignore
+===================================================================
+--- flutter_ocr/android/.gitignore	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/android/.gitignore	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,7 +0,0 @@
+-gradle-wrapper.jar
+-/.gradle
+-/captures/
+-/gradlew
+-/gradlew.bat
+-/local.properties
+-GeneratedPluginRegistrant.java
+Index: flutter_ocr/android/build.gradle
+===================================================================
+--- flutter_ocr/android/build.gradle	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/android/build.gradle	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,31 +0,0 @@
+-buildscript {
+-    ext.kotlin_version = '1.3.50'
+-    repositories {
+-        google()
+-        jcenter()
+-    }
+-
+-    dependencies {
+-        classpath 'com.android.tools.build:gradle:3.5.0'
+-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+-    }
+-}
+-
+-allprojects {
+-    repositories {
+-        google()
+-        jcenter()
+-    }
+-}
+-
+-rootProject.buildDir = '../build'
+-subprojects {
+-    project.buildDir = "${rootProject.buildDir}/${project.name}"
+-}
+-subprojects {
+-    project.evaluationDependsOn(':app')
+-}
+-
+-task clean(type: Delete) {
+-    delete rootProject.buildDir
+-}
+Index: flutter_ocr/android/gradle.properties
+===================================================================
+--- flutter_ocr/android/gradle.properties	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/android/gradle.properties	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,4 +0,0 @@
+-org.gradle.jvmargs=-Xmx1536M
+-android.enableR8=true
+-android.useAndroidX=true
+-android.enableJetifier=true
+Index: flutter_ocr/android/settings.gradle
+===================================================================
+--- flutter_ocr/android/settings.gradle	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/android/settings.gradle	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,15 +0,0 @@
+-include ':app'
+-
+-def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
+-
+-def plugins = new Properties()
+-def pluginsFile = new File(flutterProjectRoot.toFile(), '.flutter-plugins')
+-if (pluginsFile.exists()) {
+-    pluginsFile.withReader('UTF-8') { reader -> plugins.load(reader) }
+-}
+-
+-plugins.each { name, path ->
+-    def pluginDirectory = flutterProjectRoot.resolve(path).resolve('android').toFile()
+-    include ":$name"
+-    project(":$name").projectDir = pluginDirectory
+-}
+Index: flutter_ocr/android/settings_aar.gradle
+===================================================================
+--- flutter_ocr/android/settings_aar.gradle	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/android/settings_aar.gradle	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,1 +0,0 @@
+-include ':app'
+Index: flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json
+===================================================================
+--- flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,122 +0,0 @@
+-{
+-  "images" : [
+-    {
+-      "size" : "20x20",
+-      "idiom" : "iphone",
+-      "filename" : "Icon-App-20x20@2x.png",
+-      "scale" : "2x"
+-    },
+-    {
+-      "size" : "20x20",
+-      "idiom" : "iphone",
+-      "filename" : "Icon-App-20x20@3x.png",
+-      "scale" : "3x"
+-    },
+-    {
+-      "size" : "29x29",
+-      "idiom" : "iphone",
+-      "filename" : "Icon-App-29x29@1x.png",
+-      "scale" : "1x"
+-    },
+-    {
+-      "size" : "29x29",
+-      "idiom" : "iphone",
+-      "filename" : "Icon-App-29x29@2x.png",
+-      "scale" : "2x"
+-    },
+-    {
+-      "size" : "29x29",
+-      "idiom" : "iphone",
+-      "filename" : "Icon-App-29x29@3x.png",
+-      "scale" : "3x"
+-    },
+-    {
+-      "size" : "40x40",
+-      "idiom" : "iphone",
+-      "filename" : "Icon-App-40x40@2x.png",
+-      "scale" : "2x"
+-    },
+-    {
+-      "size" : "40x40",
+-      "idiom" : "iphone",
+-      "filename" : "Icon-App-40x40@3x.png",
+-      "scale" : "3x"
+-    },
+-    {
+-      "size" : "60x60",
+-      "idiom" : "iphone",
+-      "filename" : "Icon-App-60x60@2x.png",
+-      "scale" : "2x"
+-    },
+-    {
+-      "size" : "60x60",
+-      "idiom" : "iphone",
+-      "filename" : "Icon-App-60x60@3x.png",
+-      "scale" : "3x"
+-    },
+-    {
+-      "size" : "20x20",
+-      "idiom" : "ipad",
+-      "filename" : "Icon-App-20x20@1x.png",
+-      "scale" : "1x"
+-    },
+-    {
+-      "size" : "20x20",
+-      "idiom" : "ipad",
+-      "filename" : "Icon-App-20x20@2x.png",
+-      "scale" : "2x"
+-    },
+-    {
+-      "size" : "29x29",
+-      "idiom" : "ipad",
+-      "filename" : "Icon-App-29x29@1x.png",
+-      "scale" : "1x"
+-    },
+-    {
+-      "size" : "29x29",
+-      "idiom" : "ipad",
+-      "filename" : "Icon-App-29x29@2x.png",
+-      "scale" : "2x"
+-    },
+-    {
+-      "size" : "40x40",
+-      "idiom" : "ipad",
+-      "filename" : "Icon-App-40x40@1x.png",
+-      "scale" : "1x"
+-    },
+-    {
+-      "size" : "40x40",
+-      "idiom" : "ipad",
+-      "filename" : "Icon-App-40x40@2x.png",
+-      "scale" : "2x"
+-    },
+-    {
+-      "size" : "76x76",
+-      "idiom" : "ipad",
+-      "filename" : "Icon-App-76x76@1x.png",
+-      "scale" : "1x"
+-    },
+-    {
+-      "size" : "76x76",
+-      "idiom" : "ipad",
+-      "filename" : "Icon-App-76x76@2x.png",
+-      "scale" : "2x"
+-    },
+-    {
+-      "size" : "83.5x83.5",
+-      "idiom" : "ipad",
+-      "filename" : "Icon-App-83.5x83.5@2x.png",
+-      "scale" : "2x"
+-    },
+-    {
+-      "size" : "1024x1024",
+-      "idiom" : "ios-marketing",
+-      "filename" : "Icon-App-1024x1024@1x.png",
+-      "scale" : "1x"
+-    }
+-  ],
+-  "info" : {
+-    "version" : 1,
+-    "author" : "xcode"
+-  }
+-}
+Index: flutter_ocr/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json
+===================================================================
+--- flutter_ocr/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,23 +0,0 @@
+-{
+-  "images" : [
+-    {
+-      "idiom" : "universal",
+-      "filename" : "LaunchImage.png",
+-      "scale" : "1x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "filename" : "LaunchImage@2x.png",
+-      "scale" : "2x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "filename" : "LaunchImage@3x.png",
+-      "scale" : "3x"
+-    }
+-  ],
+-  "info" : {
+-    "version" : 1,
+-    "author" : "xcode"
+-  }
+-}
+Index: flutter_ocr/ios/Runner/Runner-Bridging-Header.h
+===================================================================
+--- flutter_ocr/ios/Runner/Runner-Bridging-Header.h	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/ios/Runner/Runner-Bridging-Header.h	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,1 +0,0 @@
+-#import "GeneratedPluginRegistrant.h"
+\ No newline at end of file
+Index: flutter_ocr/ios/.gitignore
+===================================================================
+--- flutter_ocr/ios/.gitignore	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/ios/.gitignore	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,32 +0,0 @@
+-*.mode1v3
+-*.mode2v3
+-*.moved-aside
+-*.pbxuser
+-*.perspectivev3
+-**/*sync/
+-.sconsign.dblite
+-.tags*
+-**/.vagrant/
+-**/DerivedData/
+-Icon?
+-**/Pods/
+-**/.symlinks/
+-profile
+-xcuserdata
+-**/.generated/
+-Flutter/App.framework
+-Flutter/Flutter.framework
+-Flutter/Flutter.podspec
+-Flutter/Generated.xcconfig
+-Flutter/app.flx
+-Flutter/app.zip
+-Flutter/flutter_assets/
+-Flutter/flutter_export_environment.sh
+-ServiceDefinitions.json
+-Runner/GeneratedPluginRegistrant.*
+-
+-# Exceptions to above rules.
+-!default.mode1v3
+-!default.mode2v3
+-!default.pbxuser
+-!default.perspectivev3
+Index: flutter_ocr/lib/main.dart
+===================================================================
+--- flutter_ocr/lib/main.dart	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/lib/main.dart	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,82 +0,0 @@
+-import 'package:flutter/material.dart';
+-import 'package:flutter_mobile_vision/flutter_mobile_vision.dart';
+-
+-void main() => runApp(MyApp());
+-
+-class MyApp extends StatelessWidget {
+-  // This widget is the root of your application.
+-  @override
+-  Widget build(BuildContext context) {
+-    return MaterialApp(
+-      title: 'Flutter Demo',
+-      theme: ThemeData(
+-        primarySwatch: Colors.blue,
+-      ),
+-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+-    );
+-  }
+-}
+-
+-class MyHomePage extends StatefulWidget {
+-  MyHomePage({Key key, this.title}) : super(key: key);
+-
+-  final String title;
+-
+-  @override
+-  _MyAppState createState() => _MyAppState();
+-
+-}
+-
+-class _MyAppState extends State<MyHomePage> {
+-
+-  int _cameraOcr = FlutterMobileVision.CAMERA_BACK;
+-  String _textValue = "sample";
+-
+-  @override
+-  void initState() {
+-    super.initState();
+-    FlutterMobileVision.start().then((x) => setState(() {}));
+-  }
+-
+-  Future<Null> _read() async {
+-    List<OcrText> texts = [];
+-    try {
+-      texts = await FlutterMobileVision.read(
+-        camera: _cameraOcr,
+-        waitTap: true,
+-      );
+-      setState(() {
+-        _textValue = texts[0].value;
+-      });
+-    } on Exception {
+-      texts.add(OcrText('Failed to recognize'));
+-    }
+-  }
+-
+-  @override
+-  Widget build(BuildContext context) {
+-
+-    return MaterialApp(
+-      theme: ThemeData(
+-        primarySwatch: Colors.lime,
+-        buttonColor: Colors.lime,
+-      ),
+-      home: Scaffold(
+-        appBar: AppBar(
+-          title: Text("Flutter Mobile Vision"),
+-        ),
+-          body: Center(
+-            child: ListView(
+-              children: <Widget>[
+-                Text(_textValue),
+-                RaisedButton(
+-                  onPressed: _read,
+-                  child: Text('Start Scanning'),
+-                )
+-              ],
+-            ),
+-          )
+-      ),
+-    );
+-  }
+-}
+Index: flutter_ocr/linux/.gitignore
+===================================================================
+--- flutter_ocr/linux/.gitignore	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/linux/.gitignore	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,1 +0,0 @@
+-flutter/ephemeral
+Index: flutter_ocr/linux/main.cc
+===================================================================
+--- flutter_ocr/linux/main.cc	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/linux/main.cc	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,67 +0,0 @@
+-#include <flutter/flutter_window_controller.h>
+-#include <linux/limits.h>
+-#include <unistd.h>
+-
+-#include <cstdlib>
+-#include <iostream>
+-#include <memory>
+-#include <vector>
+-
+-#include "flutter/generated_plugin_registrant.h"
+-#include "window_configuration.h"
+-
+-namespace {
+-
+-// Returns the path of the directory containing this executable, or an empty
+-// string if the directory cannot be found.
+-std::string GetExecutableDirectory() {
+-  char buffer[PATH_MAX + 1];
+-  ssize_t length = readlink("/proc/self/exe", buffer, sizeof(buffer));
+-  if (length > PATH_MAX) {
+-    std::cerr << "Couldn't locate executable" << std::endl;
+-    return "";
+-  }
+-  std::string executable_path(buffer, length);
+-  size_t last_separator_position = executable_path.find_last_of('/');
+-  if (last_separator_position == std::string::npos) {
+-    std::cerr << "Unabled to find parent directory of " << executable_path
+-              << std::endl;
+-    return "";
+-  }
+-  return executable_path.substr(0, last_separator_position);
+-}
+-
+-}  // namespace
+-
+-int main(int argc, char **argv) {
+-  // Resources are located relative to the executable.
+-  std::string base_directory = GetExecutableDirectory();
+-  if (base_directory.empty()) {
+-    base_directory = ".";
+-  }
+-  std::string data_directory = base_directory + "/data";
+-  std::string assets_path = data_directory + "/flutter_assets";
+-  std::string icu_data_path = data_directory + "/icudtl.dat";
+-
+-  // Arguments for the Flutter Engine.
+-  std::vector<std::string> arguments;
+-
+-  flutter::FlutterWindowController flutter_controller(icu_data_path);
+-  flutter::WindowProperties window_properties = {};
+-  window_properties.title = kFlutterWindowTitle;
+-  window_properties.width = kFlutterWindowWidth;
+-  window_properties.height = kFlutterWindowHeight;
+-
+-  // Start the engine.
+-  if (!flutter_controller.CreateWindow(window_properties, assets_path,
+-                                       arguments)) {
+-    return EXIT_FAILURE;
+-  }
+-  RegisterPlugins(&flutter_controller);
+-
+-  // Run until the window is closed.
+-  while (flutter_controller.RunEventLoopWithTimeout(
+-      std::chrono::milliseconds::max())) {
+-  }
+-  return EXIT_SUCCESS;
+-}
+Index: flutter_ocr/linux/window_configuration.cc
+===================================================================
+--- flutter_ocr/linux/window_configuration.cc	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/linux/window_configuration.cc	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,5 +0,0 @@
+-#include "window_configuration.h"
+-
+-const char *kFlutterWindowTitle = "flutterocr";
+-const unsigned int kFlutterWindowWidth = 800;
+-const unsigned int kFlutterWindowHeight = 600;
+Index: flutter_ocr/linux/window_configuration.h
+===================================================================
+--- flutter_ocr/linux/window_configuration.h	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/linux/window_configuration.h	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,15 +0,0 @@
+-#ifndef WINDOW_CONFIGURATION_
+-#define WINDOW_CONFIGURATION_
+-
+-// This is a temporary approach to isolate common customizations from main.cpp,
+-// where the APIs are still in flux. This should simplify re-creating the
+-// runner while preserving local changes.
+-//
+-// Longer term there should be simpler configuration options for common
+-// customizations like this, without requiring native code changes.
+-
+-extern const char *kFlutterWindowTitle;
+-extern const unsigned int kFlutterWindowWidth;
+-extern const unsigned int kFlutterWindowHeight;
+-
+-#endif  // WINDOW_CONFIGURATION_
+Index: flutter_ocr/test/widget_test.dart
+===================================================================
+--- flutter_ocr/test/widget_test.dart	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/test/widget_test.dart	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,30 +0,0 @@
+-// This is a basic Flutter widget test.
+-//
+-// To perform an interaction with a widget in your test, use the WidgetTester
+-// utility that Flutter provides. For example, you can send tap and scroll
+-// gestures. You can also use WidgetTester to find child widgets in the widget
+-// tree, read text, and verify that the values of widget properties are correct.
+-
+-import 'package:flutter/material.dart';
+-import 'package:flutter_test/flutter_test.dart';
+-
+-import 'package:flutterocr/main.dart';
+-
+-void main() {
+-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+-    // Build our app and trigger a frame.
+-    await tester.pumpWidget(MyApp());
+-
+-    // Verify that our counter starts at 0.
+-    expect(find.text('0'), findsOneWidget);
+-    expect(find.text('1'), findsNothing);
+-
+-    // Tap the '+' icon and trigger a frame.
+-    await tester.tap(find.byIcon(Icons.add));
+-    await tester.pump();
+-
+-    // Verify that our counter has incremented.
+-    expect(find.text('0'), findsNothing);
+-    expect(find.text('1'), findsOneWidget);
+-  });
+-}
+Index: flutter_ocr/windows/scripts/bundle_assets_and_deps.bat
+===================================================================
+--- flutter_ocr/windows/scripts/bundle_assets_and_deps.bat	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/windows/scripts/bundle_assets_and_deps.bat	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,37 +0,0 @@
+-@echo off
+-
+-set FLUTTER_CACHE_DIR=%~1
+-set BUNDLE_DIR=%~2
+-set PLUGIN_DIR=%~3
+-set EXE_NAME=%~4
+-
+-set DATA_DIR=%BUNDLE_DIR%data
+-
+-if not exist "%DATA_DIR%" call mkdir "%DATA_DIR%"
+-if %errorlevel% neq 0 exit /b %errorlevel%
+-
+-:: Write the executable name to the location expected by the Flutter tool.
+-echo %EXE_NAME%>"%FLUTTER_CACHE_DIR%exe_filename"
+-
+-:: Copy the Flutter assets to the data directory.
+-set FLUTTER_APP_DIR=%~dp0..\..
+-set ASSET_DIR_NAME=flutter_assets
+-set TARGET_ASSET_DIR=%DATA_DIR%\%ASSET_DIR_NAME%
+-if exist "%TARGET_ASSET_DIR%" call rmdir /s /q "%TARGET_ASSET_DIR%"
+-if %errorlevel% neq 0 exit /b %errorlevel%
+-call xcopy /s /e /i /q "%FLUTTER_APP_DIR%\build\%ASSET_DIR_NAME%" "%TARGET_ASSET_DIR%"
+-if %errorlevel% neq 0 exit /b %errorlevel%
+-
+-:: Copy the icudtl.dat file from the Flutter tree to the data directory.
+-call xcopy /y /d /q "%FLUTTER_CACHE_DIR%icudtl.dat" "%DATA_DIR%"
+-if %errorlevel% neq 0 exit /b %errorlevel%
+-
+-:: Copy the Flutter DLL to the target location.
+-call xcopy /y /d /q "%FLUTTER_CACHE_DIR%flutter_windows.dll" "%BUNDLE_DIR%"
+-if %errorlevel% neq 0 exit /b %errorlevel%
+-
+-:: Copy any Plugin DLLs to the target location.
+-if exist "%PLUGIN_DIR%" (
+-  call xcopy /y /d /q "%PLUGIN_DIR%"*.dll "%BUNDLE_DIR%"
+-  if %errorlevel% neq 0 exit /b %errorlevel%
+-)
+Index: flutter_ocr/windows/scripts/prepare_dependencies.bat
+===================================================================
+--- flutter_ocr/windows/scripts/prepare_dependencies.bat	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/windows/scripts/prepare_dependencies.bat	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,5 +0,0 @@
+-@echo off
+-
+-:: Run flutter tool backend.
+-set BUILD_MODE=%~1
+-"%FLUTTER_ROOT%\packages\flutter_tools\bin\tool_backend" windows-x64 %BUILD_MODE%
+Index: flutter_ocr/windows/.gitignore
+===================================================================
+--- flutter_ocr/windows/.gitignore	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/windows/.gitignore	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,17 +0,0 @@
+-flutter/ephemeral/
+-
+-# Visual Studio user-specific files.
+-*.suo
+-*.user
+-*.userosscache
+-*.sln.docstates
+-
+-# Visual Studio build-related files.
+-x64/
+-x86/
+-
+-# Visual Studio cache files
+-# files ending in .cache can be ignored
+-*.[Cc]ache
+-# but keep track of directories ending in .cache
+-!*.[Cc]ache/
+Index: flutter_ocr/windows/main.cpp
+===================================================================
+--- flutter_ocr/windows/main.cpp	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/windows/main.cpp	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,65 +0,0 @@
+-#include <flutter/flutter_view_controller.h>
+-#include <windows.h>
+-
+-#include <chrono>
+-#include <iostream>
+-#include <vector>
+-
+-#include "flutter/generated_plugin_registrant.h"
+-#include "win32_window.h"
+-#include "window_configuration.h"
+-
+-int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
+-                      _In_ wchar_t *command_line, _In_ int show_command) {
+-  // Attach to console when present (e.g., 'flutter run') or create a
+-  // new console when running with a debugger.
+-  if (!::AttachConsole(ATTACH_PARENT_PROCESS) && ::IsDebuggerPresent()) {
+-    ::AllocConsole();
+-  }
+-
+-  flutter::DartProject project(L"data");
+-
+-  // Top-level window frame.
+-  Win32Window::Point origin(kFlutterWindowOriginX, kFlutterWindowOriginY);
+-  Win32Window::Size size(kFlutterWindowWidth, kFlutterWindowHeight);
+-
+-  flutter::FlutterViewController flutter_controller(size.width, size.height,
+-                                                    project);
+-  RegisterPlugins(&flutter_controller);
+-
+-  // Create a top-level win32 window to host the Flutter view.
+-  Win32Window window;
+-  if (!window.CreateAndShow(kFlutterWindowTitle, origin, size)) {
+-    return EXIT_FAILURE;
+-  }
+-
+-  // Parent and resize Flutter view into top-level window.
+-  window.SetChildContent(flutter_controller.view()->GetNativeWindow());
+-
+-  // Run messageloop with a hook for flutter_controller to do work until
+-  // the window is closed.
+-  std::chrono::nanoseconds wait_duration(0);
+-  // Run until the window is closed.
+-  while (window.GetHandle() != nullptr) {
+-    MsgWaitForMultipleObjects(0, nullptr, FALSE,
+-                              static_cast<DWORD>(wait_duration.count() / 1000),
+-                              QS_ALLINPUT);
+-    MSG message;
+-    // All pending Windows messages must be processed; MsgWaitForMultipleObjects
+-    // won't return again for items left in the queue after PeekMessage.
+-    while (PeekMessage(&message, nullptr, 0, 0, PM_REMOVE)) {
+-      if (message.message == WM_QUIT) {
+-        window.Destroy();
+-        break;
+-      }
+-      TranslateMessage(&message);
+-      DispatchMessage(&message);
+-    }
+-    // Allow Flutter to process its messages.
+-    // TODO: Consider interleaving processing on a per-message basis to avoid
+-    // the possibility of one queue starving the other.
+-    wait_duration = flutter_controller.ProcessMessages();
+-  }
+-
+-  return EXIT_SUCCESS;
+-}
+Index: flutter_ocr/windows/resource.h
+===================================================================
+--- flutter_ocr/windows/resource.h	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/windows/resource.h	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,16 +0,0 @@
+-//{{NO_DEPENDENCIES}}
+-// Microsoft Visual C++ generated include file.
+-// Used by Runner.rc
+-//
+-#define IDI_APP_ICON                    101
+-
+-// Next default values for new objects
+-//
+-#ifdef APSTUDIO_INVOKED
+-#ifndef APSTUDIO_READONLY_SYMBOLS
+-#define _APS_NEXT_RESOURCE_VALUE        102
+-#define _APS_NEXT_COMMAND_VALUE         40001
+-#define _APS_NEXT_CONTROL_VALUE         1001
+-#define _APS_NEXT_SYMED_VALUE           101
+-#endif
+-#endif
+Index: flutter_ocr/windows/win32_window.cc
+===================================================================
+--- flutter_ocr/windows/win32_window.cc	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/windows/win32_window.cc	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,177 +0,0 @@
+-#include "win32_window.h"
+-
+-#include <flutter_windows.h>
+-
+-#include "resource.h"
+-
+-namespace {
+-
+-// The Windows DPI system is based on this
+-// constant for machines running at 100% scaling.
+-constexpr int kBaseDpi = 96;
+-
+-constexpr const wchar_t kClassName[] = L"CLASSNAME";
+-
+-using EnableNonClientDpiScaling = BOOL __stdcall(HWND hwnd);
+-
+-// Scale helper to convert logical scaler values to physical using passed in
+-// scale factor
+-int Scale(int source, double scale_factor) {
+-  return static_cast<int>(source * scale_factor);
+-}
+-
+-// Dynamically loads the |EnableNonClientDpiScaling| from the User32 module.
+-// This API is only needed for PerMonitor V1 awareness mode.
+-void EnableFullDpiSupportIfAvailable(HWND hwnd) {
+-  HMODULE user32_module = LoadLibraryA("User32.dll");
+-  if (!user32_module) {
+-    return;
+-  }
+-  auto enable_non_client_dpi_scaling =
+-      reinterpret_cast<EnableNonClientDpiScaling *>(
+-          GetProcAddress(user32_module, "EnableNonClientDpiScaling"));
+-  if (enable_non_client_dpi_scaling != nullptr) {
+-    enable_non_client_dpi_scaling(hwnd);
+-    FreeLibrary(user32_module);
+-  }
+-}
+-}  // namespace
+-
+-Win32Window::Win32Window() {}
+-
+-Win32Window::~Win32Window() { Destroy(); }
+-
+-bool Win32Window::CreateAndShow(const std::wstring &title, const Point &origin,
+-                                const Size &size) {
+-  Destroy();
+-
+-  WNDCLASS window_class = RegisterWindowClass();
+-
+-  const POINT target_point = {static_cast<LONG>(origin.x),
+-                              static_cast<LONG>(origin.y)};
+-  HMONITOR monitor = MonitorFromPoint(target_point, MONITOR_DEFAULTTONEAREST);
+-  UINT dpi = FlutterDesktopGetDpiForMonitor(monitor);
+-  double scale_factor = dpi / kBaseDpi;
+-
+-  HWND window = CreateWindow(
+-      window_class.lpszClassName, title.c_str(),
+-      WS_OVERLAPPEDWINDOW | WS_VISIBLE, Scale(origin.x, scale_factor),
+-      Scale(origin.y, scale_factor), Scale(size.width, scale_factor),
+-      Scale(size.height, scale_factor), nullptr, nullptr,
+-      window_class.hInstance, this);
+-  return window != nullptr;
+-}
+-
+-WNDCLASS Win32Window::RegisterWindowClass() {
+-  WNDCLASS window_class{};
+-  window_class.hCursor = LoadCursor(nullptr, IDC_ARROW);
+-  window_class.lpszClassName = kClassName;
+-  window_class.style = CS_HREDRAW | CS_VREDRAW;
+-  window_class.cbClsExtra = 0;
+-  window_class.cbWndExtra = 0;
+-  window_class.hInstance = GetModuleHandle(nullptr);
+-  window_class.hIcon =
+-      LoadIcon(window_class.hInstance, MAKEINTRESOURCE(IDI_APP_ICON));
+-  window_class.hbrBackground = 0;
+-  window_class.lpszMenuName = nullptr;
+-  window_class.lpfnWndProc = WndProc;
+-  RegisterClass(&window_class);
+-  return window_class;
+-}
+-
+-LRESULT CALLBACK Win32Window::WndProc(HWND const window, UINT const message,
+-                                      WPARAM const wparam,
+-                                      LPARAM const lparam) noexcept {
+-  if (message == WM_NCCREATE) {
+-    auto window_struct = reinterpret_cast<CREATESTRUCT *>(lparam);
+-    SetWindowLongPtr(window, GWLP_USERDATA,
+-                     reinterpret_cast<LONG_PTR>(window_struct->lpCreateParams));
+-
+-    auto that = static_cast<Win32Window *>(window_struct->lpCreateParams);
+-    EnableFullDpiSupportIfAvailable(window);
+-    that->window_handle_ = window;
+-  } else if (Win32Window *that = GetThisFromHandle(window)) {
+-    return that->MessageHandler(window, message, wparam, lparam);
+-  }
+-
+-  return DefWindowProc(window, message, wparam, lparam);
+-}
+-
+-LRESULT
+-Win32Window::MessageHandler(HWND hwnd, UINT const message, WPARAM const wparam,
+-                            LPARAM const lparam) noexcept {
+-  auto window =
+-      reinterpret_cast<Win32Window *>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
+-
+-  if (window == nullptr) {
+-    return 0;
+-  }
+-
+-  switch (message) {
+-    case WM_DESTROY:
+-      window_handle_ = nullptr;
+-      Destroy();
+-      return 0;
+-
+-    case WM_DPICHANGED: {
+-      auto newRectSize = reinterpret_cast<RECT *>(lparam);
+-      LONG newWidth = newRectSize->right - newRectSize->left;
+-      LONG newHeight = newRectSize->bottom - newRectSize->top;
+-
+-      SetWindowPos(hwnd, nullptr, newRectSize->left, newRectSize->top, newWidth,
+-                   newHeight, SWP_NOZORDER | SWP_NOACTIVATE);
+-
+-      return 0;
+-    }
+-    case WM_SIZE:
+-      RECT rect;
+-      GetClientRect(hwnd, &rect);
+-      if (child_content_ != nullptr) {
+-        // Size and position the child window.
+-        MoveWindow(child_content_, rect.left, rect.top, rect.right - rect.left,
+-                   rect.bottom - rect.top, TRUE);
+-      }
+-      return 0;
+-
+-    case WM_ACTIVATE:
+-      if (child_content_ != nullptr) {
+-        SetFocus(child_content_);
+-      }
+-      return 0;
+-
+-    // Messages that are directly forwarded to embedding.
+-    case WM_FONTCHANGE:
+-      SendMessage(child_content_, WM_FONTCHANGE, NULL, NULL);
+-      return 0;
+-  }
+-
+-  return DefWindowProc(window_handle_, message, wparam, lparam);
+-}
+-
+-void Win32Window::Destroy() {
+-  if (window_handle_) {
+-    DestroyWindow(window_handle_);
+-    window_handle_ = nullptr;
+-  }
+-
+-  UnregisterClass(kClassName, nullptr);
+-}
+-
+-Win32Window *Win32Window::GetThisFromHandle(HWND const window) noexcept {
+-  return reinterpret_cast<Win32Window *>(
+-      GetWindowLongPtr(window, GWLP_USERDATA));
+-}
+-
+-void Win32Window::SetChildContent(HWND content) {
+-  child_content_ = content;
+-  SetParent(content, window_handle_);
+-  RECT frame;
+-  GetClientRect(window_handle_, &frame);
+-
+-  MoveWindow(content, frame.left, frame.top, frame.right - frame.left,
+-             frame.bottom - frame.top, true);
+-
+-  SetFocus(child_content_);
+-}
+-
+-HWND Win32Window::GetHandle() { return window_handle_; }
+Index: flutter_ocr/windows/win32_window.h
+===================================================================
+--- flutter_ocr/windows/win32_window.h	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/windows/win32_window.h	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,86 +0,0 @@
+-#ifndef WIN32_WINDOW_H_
+-#define WIN32_WINDOW_H_
+-
+-#include <Windows.h>
+-#include <Windowsx.h>
+-
+-#include <functional>
+-#include <memory>
+-#include <string>
+-
+-// A class abstraction for a high DPI-aware Win32 Window. Intended to be
+-// inherited from by classes that wish to specialize with custom
+-// rendering and input handling
+-class Win32Window {
+- public:
+-  struct Point {
+-    unsigned int x;
+-    unsigned int y;
+-    Point(unsigned int x, unsigned int y) : x(x), y(y) {}
+-  };
+-
+-  struct Size {
+-    unsigned int width;
+-    unsigned int height;
+-    Size(unsigned int width, unsigned int height)
+-        : width(width), height(height) {}
+-  };
+-
+-  Win32Window();
+-  virtual ~Win32Window();
+-
+-  // Creates and shows a win32 window with |title| and position and size using
+-  // |origin| and |size|. New windows are created on the default monitor. Window
+-  // sizes are specified to the OS in physical pixels, hence to ensure a
+-  // consistent size to will treat the width height passed in to this function
+-  // as logical pixels and scale to appropriate for the default monitor. Returns
+-  // true if the window was created successfully.
+-  bool CreateAndShow(const std::wstring &title, const Point &origin,
+-                     const Size &size);
+-
+-  // Release OS resources asociated with window.
+-  void Destroy();
+-
+-  // Inserts |content| into the window tree.
+-  void SetChildContent(HWND content);
+-
+-  // Returns the backing Window handle to enable clients to set icon and other
+-  // window properties. Returns nullptr if the window has been destroyed.
+-  HWND GetHandle();
+-
+- protected:
+-  // Registers a window class with default style attributes, cursor and
+-  // icon.
+-  WNDCLASS RegisterWindowClass();
+-
+-  // OS callback called by message pump. Handles the WM_NCCREATE message which
+-  // is passed when the non-client area is being created and enables automatic
+-  // non-client DPI scaling so that the non-client area automatically
+-  // responsponds to changes in DPI. All other messages are handled by
+-  // MessageHandler.
+-  static LRESULT CALLBACK WndProc(HWND const window, UINT const message,
+-                                  WPARAM const wparam,
+-                                  LPARAM const lparam) noexcept;
+-
+-  // Processes and route salient window messages for mouse handling,
+-  // size change and DPI. Delegates handling of these to member overloads that
+-  // inheriting classes can handle.
+-  LRESULT
+-  MessageHandler(HWND window, UINT const message, WPARAM const wparam,
+-                 LPARAM const lparam) noexcept;
+-
+- private:
+-  // should message loop keep running
+-  bool messageloop_running_ = true;
+-
+-  // Retrieves a class instance pointer for |window|
+-  static Win32Window *GetThisFromHandle(HWND const window) noexcept;
+-
+-  // window handle for top level window.
+-  HWND window_handle_ = nullptr;
+-
+-  // window handle for hosted content.
+-  HWND child_content_ = nullptr;
+-};
+-
+-#endif  // WIN32_WINDOW_H_
+Index: flutter_ocr/windows/window_configuration.cpp
+===================================================================
+--- flutter_ocr/windows/window_configuration.cpp	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/windows/window_configuration.cpp	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,7 +0,0 @@
+-#include "window_configuration.h"
+-
+-const wchar_t *kFlutterWindowTitle = L"flutterocr";
+-const unsigned int kFlutterWindowOriginX = 10;
+-const unsigned int kFlutterWindowOriginY = 10;
+-const unsigned int kFlutterWindowWidth = 800;
+-const unsigned int kFlutterWindowHeight = 600;
+Index: flutter_ocr/windows/window_configuration.h
+===================================================================
+--- flutter_ocr/windows/window_configuration.h	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/windows/window_configuration.h	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,18 +0,0 @@
+-#ifndef WINDOW_CONFIGURATION_
+-#define WINDOW_CONFIGURATION_
+-
+-// This is a temporary approach to isolate changes that people are likely to
+-// make to main.cpp, where the APIs are still in flux. This will reduce the
+-// need to resolve conflicts or re-create changes slightly differently every
+-// time the Windows Flutter API surface changes.
+-//
+-// Longer term there should be simpler configuration options for common
+-// customizations like this, without requiring native code changes.
+-
+-extern const wchar_t *kFlutterWindowTitle;
+-extern const unsigned int kFlutterWindowOriginX;
+-extern const unsigned int kFlutterWindowOriginY;
+-extern const unsigned int kFlutterWindowWidth;
+-extern const unsigned int kFlutterWindowHeight;
+-
+-#endif  // WINDOW_CONFIGURATION_
+Index: flutter_ocr/.gitignore
+===================================================================
+--- flutter_ocr/.gitignore	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/.gitignore	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,37 +0,0 @@
+-# Miscellaneous
+-*.class
+-*.log
+-*.pyc
+-*.swp
+-.DS_Store
+-.atom/
+-.buildlog/
+-.history
+-.svn/
+-
+-# IntelliJ related
+-*.iml
+-*.ipr
+-*.iws
+-.idea/
+-
+-# The .vscode folder contains launch configuration and tasks you configure in
+-# VS Code which you may wish to be included in version control, so this line
+-# is commented out by default.
+-#.vscode/
+-
+-# Flutter/Dart/Pub related
+-**/doc/api/
+-.dart_tool/
+-.flutter-plugins
+-.flutter-plugins-dependencies
+-.packages
+-.pub-cache/
+-.pub/
+-/build/
+-
+-# Web related
+-lib/generated_plugin_registrant.dart
+-
+-# Exceptions to above rules.
+-!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+Index: flutter_ocr/pubspec.yaml
+===================================================================
+--- flutter_ocr/pubspec.yaml	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
++++ flutter_ocr/pubspec.yaml	(revision 1607a8089bd9f3fa7233fbc63b3db676dd561889)
+@@ -1,73 +0,0 @@
+-name: flutterocr
+-description: A new Flutter application.
+-
+-# The following defines the version and build number for your application.
+-# A version number is three numbers separated by dots, like 1.2.43
+-# followed by an optional build number separated by a +.
+-# Both the version and the builder number may be overridden in flutter
+-# build by specifying --build-name and --build-number, respectively.
+-# In Android, build-name is used as versionName while build-number used as versionCode.
+-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+-# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+-# Read more about iOS versioning at
+-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+-version: 1.0.0+1
+-
+-environment:
+-  sdk: ">=2.1.0 <3.0.0"
+-
+-dependencies:
+-  flutter:
+-    sdk: flutter
+-  flutter_mobile_vision: ^0.1.3
+-
+-  # The following adds the Cupertino Icons font to your application.
+-  # Use with the CupertinoIcons class for iOS style icons.
+-  cupertino_icons: ^0.1.2
+-
+-dev_dependencies:
+-  flutter_test:
+-    sdk: flutter
+-
+-
+-# For information on the generic Dart part of this file, see the
+-# following page: https://dart.dev/tools/pub/pubspec
+-
+-# The following section is specific to Flutter.
+-flutter:
+-
+-  # The following line ensures that the Material Icons font is
+-  # included with your application, so that you can use the icons in
+-  # the material Icons class.
+-  uses-material-design: true
+-
+-  # To add assets to your application, add an assets section, like this:
+-  # assets:
+-  #  - images/a_dot_burr.jpeg
+-  #  - images/a_dot_ham.jpeg
+-
+-  # An image asset can refer to one or more resolution-specific "variants", see
+-  # https://flutter.dev/assets-and-images/#resolution-aware.
+-
+-  # For details regarding adding assets from package dependencies, see
+-  # https://flutter.dev/assets-and-images/#from-packages
+-
+-  # To add custom fonts to your application, add a fonts section here,
+-  # in this "flutter" section. Each entry in this list should have a
+-  # "family" key with the font family name, and a "fonts" key with a
+-  # list giving the asset and other descriptors for the font. For
+-  # example:
+-  # fonts:
+-  #   - family: Schyler
+-  #     fonts:
+-  #       - asset: fonts/Schyler-Regular.ttf
+-  #       - asset: fonts/Schyler-Italic.ttf
+-  #         style: italic
+-  #   - family: Trajan Pro
+-  #     fonts:
+-  #       - asset: fonts/TrajanPro.ttf
+-  #       - asset: fonts/TrajanPro_Bold.ttf
+-  #         weight: 700
+-  #
+-  # For details regarding fonts from package dependencies,
+-  # see https://flutter.dev/custom-fonts/#from-packages
+diff --git flutter_ocr/android/app/src/main/res/mipmap-hdpi/ic_launcher.png flutter_ocr/android/app/src/main/res/mipmap-hdpi/ic_launcher.png
+deleted file mode 100644
+index db77bb4b7b0906d62b1847e87f15cdcacf6a4f29..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/android/app/src/main/res/mipmap-mdpi/ic_launcher.png flutter_ocr/android/app/src/main/res/mipmap-mdpi/ic_launcher.png
+deleted file mode 100644
+index 17987b79bb8a35cc66c3c1fd44f5a5526c1b78be..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png flutter_ocr/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png
+deleted file mode 100644
+index 09d4391482be68e9e4a07fab769b5de337d16eb1..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png flutter_ocr/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+deleted file mode 100644
+index d5f1c8d34e7a88e3f88bea192c3a370d44689c3c..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png flutter_ocr/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
+deleted file mode 100644
+index 4d6372eebdb28e45604e46eeda8dd24651419bc0..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Flutter/AppFrameworkInfo.plist flutter_ocr/ios/Flutter/AppFrameworkInfo.plist
+deleted file mode 100644
+index 58e65f9b51672cf0d8015c5d2df2c8b894093dd0..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Flutter/Debug.xcconfig flutter_ocr/ios/Flutter/Debug.xcconfig
+deleted file mode 100644
+index 0b2d479c08504549ca6e74f0743bd584f068f9bd..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Flutter/Release.xcconfig flutter_ocr/ios/Flutter/Release.xcconfig
+deleted file mode 100644
+index 0b2d479c08504549ca6e74f0743bd584f068f9bd..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png
+deleted file mode 100644
+index 28c6bf03016f6c994b70f38d1b7346e5831b531f..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png
+deleted file mode 100644
+index 2ccbfd967d9697cd4b83225558af2911e9571c9b..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png
+deleted file mode 100644
+index f091b6b0bca859a3f474b03065bef75ba58a9e4c..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png
+deleted file mode 100644
+index 4cde12118dda48d71e01fcb589a74d069c5d7cb5..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png
+deleted file mode 100644
+index d0ef06e7edb86cdfe0d15b4b0d98334a86163658..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png
+deleted file mode 100644
+index dcdc2306c28505ebc0b6c3a359c4d252bf626b9f..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png
+deleted file mode 100644
+index 2ccbfd967d9697cd4b83225558af2911e9571c9b..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png
+deleted file mode 100644
+index c8f9ed8f5cee1c98386d13b17e89f719e83555b2..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png
+deleted file mode 100644
+index a6d6b8609df07bf62e5100a53a01510388bd2b22..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png
+deleted file mode 100644
+index a6d6b8609df07bf62e5100a53a01510388bd2b22..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png
+deleted file mode 100644
+index 75b2d164a5a98e212cca15ea7bf2ab5de5108680..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png
+deleted file mode 100644
+index c4df70d39da7941ef3f6dcb7f06a192d8dcb308d..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png
+deleted file mode 100644
+index 6a84f41e14e27f4b11f16f9ee39279ac98f8d5ac..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png
+deleted file mode 100644
+index d0e1f58536026aebc4f1f70e481f6993c9ff088d..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png flutter_ocr/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png
+deleted file mode 100644
+index dc9ada4725e9b0ddb1deab583e5b5102493aa332..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png flutter_ocr/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png
+deleted file mode 100644
+index 9da19eacad3b03bb08bbddbbf4ac48dd78b3d838..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png flutter_ocr/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png
+deleted file mode 100644
+index 9da19eacad3b03bb08bbddbbf4ac48dd78b3d838..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png flutter_ocr/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png
+deleted file mode 100644
+index 9da19eacad3b03bb08bbddbbf4ac48dd78b3d838..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md flutter_ocr/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md
+deleted file mode 100644
+index 65a94b5db54ec02257c0fd4e74ebea1a7a34e881..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Base.lproj/LaunchScreen.storyboard flutter_ocr/ios/Runner/Base.lproj/LaunchScreen.storyboard
+deleted file mode 100644
+index 497371ea23a88889b582a79836d65568268f5fd3..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Base.lproj/Main.storyboard flutter_ocr/ios/Runner/Base.lproj/Main.storyboard
+deleted file mode 100644
+index bbb83caaec5481ea63968cdfdf6e574aa9584a1b..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/AppDelegate.swift flutter_ocr/ios/Runner/AppDelegate.swift
+deleted file mode 100644
+index 3763683793b8430b3e8c7859ecbc87482fc1cc92..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner/Info.plist flutter_ocr/ios/Runner/Info.plist
+deleted file mode 100644
+index 5116fff25df1e02f19cd71c8a63ebfece066c5c0..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist flutter_ocr/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+deleted file mode 100644
+index fc6bf8074854f8fd9fea8d9cc80d5ca1b8d932db..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings flutter_ocr/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+deleted file mode 100644
+index af0309c4dc26b0880121296bc3fd0bd14aad8420..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata flutter_ocr/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+deleted file mode 100644
+index 59c6d39465edc08bd1e919a6248c68b1b72cfd33..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme flutter_ocr/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme
+deleted file mode 100644
+index be0b92eff4249920984a4591df4fec6fba35e942..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner.xcodeproj/project.pbxproj flutter_ocr/ios/Runner.xcodeproj/project.pbxproj
+deleted file mode 100644
+index 3bb0683e71ad45a10d162397ec6bb3ce730bbaf3..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist flutter_ocr/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+deleted file mode 100644
+index fc6bf8074854f8fd9fea8d9cc80d5ca1b8d932db..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings flutter_ocr/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+deleted file mode 100644
+index af0309c4dc26b0880121296bc3fd0bd14aad8420..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/ios/Runner.xcworkspace/contents.xcworkspacedata flutter_ocr/ios/Runner.xcworkspace/contents.xcworkspacedata
+deleted file mode 100644
+index 59c6d39465edc08bd1e919a6248c68b1b72cfd33..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/linux/flutter/.template_version flutter_ocr/linux/flutter/.template_version
+deleted file mode 100644
+index 56a6051ca2b02b04ef92d5150c9ef600403cb1de..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/linux/app_configuration.mk flutter_ocr/linux/app_configuration.mk
+deleted file mode 100644
+index 0887f694070486c85d09032181531add73aaafec..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/linux/Makefile flutter_ocr/linux/Makefile
+deleted file mode 100644
+index b9cf8580187e97e278a01f281eaeb62b929bcf2c..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/windows/flutter/.template_version flutter_ocr/windows/flutter/.template_version
+deleted file mode 100644
+index 78c6baefdd2d13b3080b53d794e90471df3c4bf2..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/windows/resources/app_icon.ico.img flutter_ocr/windows/resources/app_icon.ico.img
+deleted file mode 100644
+index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/windows/AppConfiguration.props flutter_ocr/windows/AppConfiguration.props
+deleted file mode 100644
+index 8fd5ddc065837b5d8d7f8a1f2385b0c3dea6fb2a..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/windows/FlutterBuild.vcxproj flutter_ocr/windows/FlutterBuild.vcxproj
+deleted file mode 100644
+index 5570a46538912c3167b2b9dc721971d7bfa90cbd..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/windows/runner.exe.manifest flutter_ocr/windows/runner.exe.manifest
+deleted file mode 100644
+index 2c680b8be2bab57eba3063f1addbbb5d9498960e..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/windows/Runner.rc flutter_ocr/windows/Runner.rc
+deleted file mode 100644
+index 7d864996d0b116252917a71e8b4022b72fcf2e2d..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/windows/Runner.sln flutter_ocr/windows/Runner.sln
+deleted file mode 100644
+index b04bfc3442b9ff31f2f92716e3cd2491b6368fa9..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/windows/Runner.vcxproj flutter_ocr/windows/Runner.vcxproj
+deleted file mode 100644
+index 19ff0694b36a503da310d6c496932ef389a6eb87..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/windows/Runner.vcxproj.filters flutter_ocr/windows/Runner.vcxproj.filters
+deleted file mode 100644
+index 7d373e16ddbb4c6fd836b2f0c19e9f6c14cce5e4..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/.metadata flutter_ocr/.metadata
+deleted file mode 100644
+index 9eb6a60ce24a71c73c58d10ac045215da04d678e..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/pubspec.lock flutter_ocr/pubspec.lock
+deleted file mode 100644
+index e8ab8e867c10e788dcf1b9d2f779ac684a8af2fd..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git flutter_ocr/README.md flutter_ocr/README.md
+deleted file mode 100644
+index fd26104e6ac6f7164a1f52ad5241234cb8ccdeb1..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
