@@ -28,8 +28,9 @@ class _ChatScreenState extends State<ChatScreen> {
     if(text != null) {
       data["text"] = text;
     }
-
     Firestore.instance.collection("messages").add(data);
+
+    
   }
 
   @override
